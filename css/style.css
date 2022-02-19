@@ -1,0 +1,182 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    height: 300vh;
+    background-image: url(../img/cake_header.svg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+    
+}
+.side-nav{
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+.nav-scroll{
+    position: fixed;
+    background-color: #96f7d230;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    animation: slide-nav 1s linear;
+}
+@keyframes slide-nav {
+    from{
+        transform: translateY(-200px);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+.navbar-toggler:focus-visible{
+    outline: none;
+}
+.menu-icon{
+    font-size: 2rem !important;
+}
+.nav-link{
+    padding:  0.5rem 1.1rem !important;
+}
+.nav-link.current-section{
+    border-bottom: 3px solid #96f7d2;
+}
+.nav-scroll .nav-link.current-section{
+    border-bottom: 3px solid #ff7bac;
+}
+.home{
+    position: relative;
+    
+}
+.social-v{
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.social-v a{
+    transition: 0.5s;
+}
+.social-v a:hover{
+    transform: scale(1.5);
+}
+.scroll-to-next{
+    position: absolute;
+    bottom: 30px;
+    margin: auto;
+    width: 40px;
+    left: 0;
+    right: 0;
+    border: 5px solid #96f7d2;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.services{
+    background-color: #fcb1b115;
+    
+}
+.menu{
+    background-image: url(../img/cake_icon_bg_1.png);
+    background-size: 100%;
+}
+.menu .menu-card{
+    /* background-color: #f0f69642; */
+    background-color: #96f7d228;
+    transition: 0.5s;
+}
+.menu-card:hover{
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px !important;
+}
+.slick-dots{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+.slick-dots li{
+    width: 10px !important;
+    height: 10px !important;
+    border: 2px solid #96f7d2;
+    border-radius: 50%;
+}
+.slick-dots li.slick-active{
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 50%;
+    background-color: #96f7d2;
+}
+.contact{
+    background-color: #f0f69650;
+    background: url(../img/cake_footer.png) right bottom,url(../img/cake_footer_1.png) left bottom,url(../img/cake_footer_bg.png) bottom;
+    background-repeat: no-repeat;
+    background-size: auto 80%;
+    background-attachment: fixed;
+    /* background-position: bottom; */
+}
+.footer{
+    padding-top: 150px;
+}
+.contact-link a{
+    text-decoration: none !important;
+    display: block;
+}
+.quick-li a{
+    text-decoration: none !important;
+    display: block;
+    
+}
+.ani-delay-1{
+    animation-delay: 0.5s;
+}
+.ani-delay-2{
+    animation-delay: 1s;
+}
+.ani-delay-3{
+    animation-delay: 1.5s;
+}
+.ani-delay-4{
+    animation-delay: 2s;
+}
+@media screen and (max-width: 768px) {
+    /* .service-img,.service-txt{
+        width: 100% !important;
+    } */
+    .side-nav{
+        background: rgba(255, 252, 252, 0.18);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4.5px);
+        -webkit-backdrop-filter: blur(4.5px);
+        border: 1px solid rgba(255, 252, 252, 0.2);
+        z-index: 3;
+    }
+    .navbar-nav .nav-link{
+        background-color: #fcb1b130;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        padding: 15px 20px !important;
+    }
+    .navbar-nav{
+        padding-top: 10px;
+    }
+    .nav-link.current-section{
+        border: 3px solid #f0f696 !important;
+        border-bottom: 3px solid #96f7d2 !important;
+    }
+    
+    .social-v{
+        display: none;
+    }
+    .scroll-to-next{
+        bottom: 10px;
+    }
+    .contact{
+        background-size: auto 80%;
+        background-position: center bottom;
+    }
+}
+
+

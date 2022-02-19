@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake</title>
+    <link rel="icon" href="img/Untitled.png">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body{
+            height: 100vh;
+        }
+        .search-nav{
+            position: sticky;
+            z-index: 2; 
+            top: 30px;
+            
+        }
+        
+        .product{
+            border: none !important;
+        }
+        .product img{
+            height: 200px;
+            width: 100%;
+            transition: 1s;
+            z-index: 1;
+        }
+        .product:hover img{
+            transform: scale(1.1);
+            
+        }
+        .add-to-card-img{
+            height:auto;
+            width: 100px;
+        }
+        .item-in-cart{
+            background-color: #f0f69625;
+        }
+        
+        .overflow-scroll{
+            overflow-y: scroll;
+
+        }
+        .overflow-scroll::-webkit-scrollbar {
+            width: 10px;
+           
+        }
+        @media screen and (max-width: 768px) {
+            .side-nav{
+                background-color: transparent !important;
+            }
+            .search-nav{
+                display: flex;
+                padding-top: 85px;
+                background-color: #fff;
+            }
+            .shop-nav{
+                background-color: #fff;
+                top: 0 !important;
+            }
+            .card{
+                width: 75% !important;
+            }
+            .item-in-cart{
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- nav start -->
+    <header class="container-fluid side-nav pt-3 bg-primary ">
+        <div class="row">
+             <div class="container ">
+               <div class="row">
+                 <div class="col-12">
+                   <nav class="navbar navbar-expand-lg navbar-light">
+                     <a class="navbar-brand font-weight-bolder font-italic text-uppercase text-secondary" href="index.html" >
+                       <h1 class="mb-0">cake</h1> 
+                     </a>
+                     <a class="text-secondary d-md-none" style="text-decoration: none;" href="#shop" >
+                        <h3>
+                            <span class="add-to-cart-count">0</span>
+                            <i class="fas fa-cart-shopping"></i>
+                        </h3>
+                    </a>
+                     <!-- <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                       <i class="fa-solid fa-burger text-secondary menu-icon"></i>
+                     </button>
+                                     
+                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                       <ul class="navbar-nav">
+                         <li class="nav-item ">
+                           <a class="nav-link text-uppercase text-secondary" href="#home">Home <span class="sr-only">(current)</span></a>
+                         </li>
+                         <li class="nav-item">
+                           <a class="nav-link text-uppercase text-secondary" href="#services">Services</a>
+                         </li>
+                         <li class="nav-item">
+                           <a class="nav-link text-uppercase text-secondary" href="#menu">Menu</a>
+                         </li>
+                         <li class="nav-item">
+                           <a class="nav-link text-uppercase text-secondary" href="#contact">Contact Us</a>
+                         </li>
+                       </ul>
+                     </div> -->
+   
+                   </nav>
+                 </div>
+               </div>
+             </div>
+           </div>
+       </header>
+   <!-- nav end -->
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-11 ">
+                <div class="row ">
+                    <div class="col-12 col-md-8 border-right min-vh-100 ">
+                        <div class="vh-100 overflow-scroll pr-2 ">
+                            <div class=" my-0 my-md-4 pb-0 pb-md-5 search-nav" >
+                                <div class="float-right ">
+                                    <div class="form-row search-nav-input">
+                                        <div class="mr-2 col col-md-auto">
+                                            <input type="text" class="form-control text-capitalize" placeholder="Search Menu" name="" id="search">
+                                        </div>
+                                        <div class="col col-md-auto">
+                                            <select name="" id="category" class="custom-select">
+                                                <option value="">All Menu</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu" class="row card-columns justify-content-center mt-5">
+                               
+                                   
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="vh-100 overflow-scroll">
+                            <div class="d-flex justify-content-between align-items-end my-3 shop-nav" style="position:sticky; top: 30px; z-index: 2;">
+                                <a href="#menu" style="text-decoration: none;" >
+                                    <h3 class="font-weight-bolder mb-0">Cake Shop</h3>
+                                    <p class="text-black-50 mb-0">Items List</p>
+                                </a>
+                                <div class="" id="shop">
+                                    <h3>
+                                        <span class="add-to-cart-count">0</span>
+                                        <i class="fas fa-cart-shopping"></i>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div id="cart" class="mt-5">
+                                
+                            </div>
+                            <div id="total" class="rounded bg-warning" style="position: sticky; bottom: 0;">
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="js/data.js"></script>
+    <script>
+        let category = ['Cake','Coffee','Ice-cream','Burger'];
+    //    console.log(data);
+
+        //product show
+       function toShow(x){
+        $("#menu").empty();
+            x.map(product=>{
+                $("#menu").append(`
+                <div class="card product mb-5 w-25">
+                    <img src="${product.image}" alt="" class="card-img-top card-img-bottom" >
+                    <div class="card-body border rounded" style="border-top:none !important;">
+                        <p class="card-title text-primary font-weight-bolder text-nowrap overflow-hidden">${product.title}</p>
+                        
+                        <div class="d-flex align-items-end justify-content-between mt-3">
+                            <span>${product.price} ကျပ်</span>
+                            <button class="btn btn-outline-primary add-to-cart-btn" product-id="${product.id}"><i class="fas fa-shopping-basket"></i></button>
+                        </div>
+                    </div>
+                </div>              
+                `);
+            });
+        }
+        toShow(data);
+
+        //calculate total
+        function calculate(){
+            let count = $(".add-to-cart-cost").length;
+            $(".add-to-cart-count").html(count);
+            if(count > 0){
+                let total = $(".add-to-cart-cost").toArray().map(el => el.innerHTML).reduce((x,y) => Number(x)+Number(y));
+                $('#total').html(`
+                
+                        <div class="d-flex justify-content-between p-2">
+                            <h3>Total</h3>
+                            <h3><span>${Number(total).toFixed(2)} ကျပ်</span></h3>
+                        </div>
+                    
+                `);
+            }else{
+                $('#total').html(`
+                
+                        <div class=" p-2">
+                            <h3 class="text-center">Empty Items</h3>
+                            
+                        </div>
+                    
+                `);
+            }
+        };
+        
+        //input search
+        $("#search").on("keyup",function(){
+            let input = $(this).val().toLowerCase();
+            $('.product').filter(function(){
+                $(this).toggle($(this).text().toLowerCase().indexOf(input)>-1);
+            });
+        });
+
+        //select
+        // console.log(category);
+        category.map(el => {
+                $("#category").append(`
+                <option value="${el}">${el}</option>
+                `);
+            });
+        $('#category').on("change",function(){
+            let currentCategory = $(this).val().toLowerCase();
+            if(currentCategory != 0){
+                let filterCategory = data.filter(c => {
+                if(currentCategory == c.category){
+                    return c;
+                    
+                };
+            });
+            toShow(filterCategory)
+            }else{
+                toShow(data);
+            }
+        });
+
+        //add-to-cart show
+        $('#menu').delegate(".add-to-cart-btn","click",function(){
+            currentId = $(this).attr('product-id');
+            dataInfo = data.filter(el => el.id == currentId)[0];
+            dataId = $('.item-in-cart').toArray().map(el => el.getAttribute("data-id"));
+            if(dataId.includes(currentId)){
+                alert("Already Added");
+            }else{
+                $("#cart").append(`
+                    <div class="card border-0 item-in-cart" data-id=${dataInfo.id}>
+                        <div class="card-body ">
+                            <div class="d-flex justify-content-between align-items-end">
+                                <img src="${dataInfo.image}" alt="" class="add-to-card-img">
+                                <button class="btn btn-outline-danger remove-from-cart">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <p class="text-primary fw-bolder mt-3">${dataInfo.title}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-outline-primary btn-sm count-minus">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="number" class="form-control w-25 mx-1 p-1 quantity" unit-price="${dataInfo.price}" value="1" min="1">
+                                    <button class="btn btn-outline-primary btn-sm count-plus">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <h5 class="mb-0"><span class="add-to-cart-cost">${dataInfo.price}</span> ကျပ်</h5>
+                            </div>
+                            
+                        </div>
+                        <hr>
+                    </div>
+                    
+                `)
+            } 
+            calculate();
+        });
+        
+        //delete
+        $('#cart').delegate(".remove-from-cart","click",function(){
+            $(this).parentsUntil("#cart").remove();
+            calculate();
+        });
+        
+        //plus
+        $("#cart").delegate(".count-plus","click",function(){
+            let q = $(this).siblings('.quantity').val();
+            let newQuantity = Number(q)+1;
+            let price = $(this).siblings('.quantity').attr("unit-price");
+            let totalPrice = newQuantity * price;
+            $(this).siblings('.quantity').val(newQuantity);
+            $(this).parent().siblings("h5").find(".add-to-cart-cost").html(totalPrice.toFixed(2));
+            calculate();
+        });
+       
+        //minus
+        $("#cart").delegate(".count-minus","click",function(){
+            let q = $(this).siblings('.quantity').val();
+            if(q>1){
+                let newQuantity = Number(q)-1;
+                let price = $(this).siblings('.quantity').attr("unit-price");
+                let totalPrice = newQuantity * price;
+                $(this).siblings('.quantity').val(newQuantity);
+                $(this).parent().siblings("h5").find(".add-to-cart-cost").html(totalPrice.toFixed(2));
+                calculate();
+            };
+        });
+
+        //type number
+        $("#cart").delegate(".quantity","keyup change",function(){
+            let q = $(this).val();
+            if(q>=1){
+                let newQuantity = Number(q);
+                let price = $(this).attr("unit-price");
+                let totalPrice = newQuantity * price;
+                $(this).val(newQuantity);
+                $(this).parent().siblings("h5").find(".add-to-cart-cost").html(totalPrice.toFixed(2));
+                calculate();
+            }else{
+                alert("Please order more than one!")
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@300;500;800&family=Vollkorn:wght@400;600;900&display=swap');
+$theme-colors: (
+  "primary": #fcb1b1,
+  "secondary": #3f3b3b,
+  "success": #96f7d2,
+  "warning": #f0f696,
+  "danger": #ff7bac,
+
+);
+$border-radius-lg: 10rem;
+$border-radius-sm: 35px;
+
+$font-family-sans-serif:'Noto Sans Myanmar', 'Vollkorn', sans-serif;
+@import "../node_modules/bootstrap/scss/bootstrap";
